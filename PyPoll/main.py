@@ -4,7 +4,7 @@ import os
 #import module to read csv files
 import csv
 
-csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyBank_budget_data.csv")
+csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data.csv")
 
 #reading csv file
 with open(csvpath, newline='') as csvfile:
