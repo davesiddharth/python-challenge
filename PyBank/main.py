@@ -51,6 +51,8 @@ with open(csvpath, 'r') as csvfile:
     max_profit_ind = pro_list.index(max_profit)+1
     max_loss_ind = pro_list.index(max_loss)+1
 
+    print("Financial Analysis")
+    print("--------------------------------------------------------")
     print(f"Total Months: {total_months}")
     print(f"Total: ${total_amount}")
     print(f"Average Change: ${mean}")
@@ -59,6 +61,8 @@ with open(csvpath, 'r') as csvfile:
 
 
 sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyBank/results_main.txt", "w")
+print("Financial Analysis")
+print("--------------------------------------------------------")
 print(f"Total Months: {total_months}")
 print(f"Total: ${total_amount}")
 print(f"Average Change: ${mean}")
