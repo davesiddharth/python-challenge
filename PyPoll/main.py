@@ -13,4 +13,19 @@ with open(csvpath, newline='') as csvfile:
     print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"{csv_header}")
+    #print(f"{csv_header}")
+
+    votes = []
+
+    for row in csvreader:
+        #to calculate total number of votes casted
+        voterID = row[0]
+        votes.append(voterID)
+        
+
+    total_votes = len(votes)
+
+    print("Election Results")
+    print("-------------------------------------")
+    print(f"Election Results: {total_votes}")
+
