@@ -16,73 +16,60 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
     #print(f"{csv_header}")
 
-    votes = []
+    total_votes = 0
     candidates_list = []
     candidate_names = []
-    candidate0_vote = []
-    candidate1_vote = []
-    candidate2_vote = []
-    candidate3_vote = []
-    
+    candidate_vote = []
+    candidate_vote_percentage = []
+    vote_percent = 0.000
+
     for row in csvreader:
-        #to calculate total number of votes casted
-        voterID = row[0]
-        votes.append(voterID)
-        candidate = row[2]
-        candidates_list.append(candidate)
-        
-        for x in candidates_list: 
-        # check if exists in unique_list or not 
-            if x not in candidate_names: 
-                candidate_names.append(x) 
-            
+        #count total number of votes casted
+        total_votes +=1
+    #print(total_votes)
+        #read in the candidate list from row 3 of the csv file
+        candidates_list = row[2]
+        if candidates_list in candidate_names:
+            candidate_index = candidate_names.index(candidates_list)
+            candidate_vote[candidate_index] += 1
+        else:
+            candidate_names.append(candidates_list)
+            candidate_vote.append(1)
+    #print the candidate's list and their vote total individual votes
     #print(candidate_names)
-    total_votes = len(votes)
+    #print(candidate_vote)
 
-    for candidate in candidates_list:
-        #to count candidates individual votes
-        if candidate == candidate_names[0]:
-            candidate0_vote.append(candidate)
-        elif candidate == candidate_names[1]:
-            candidate1_vote.append(candidate)
-        elif candidate == candidate_names[2]:
-            candidate2_vote.append(candidate)
-        elif candidate == candidate_names[3]:
-            candidate3_vote.append(candidate)
-        
+    for percentage in range(len(candidate_names)):
+        vote_percent = round((candidate_vote[percentage]/total_votes)*100,3)
+        candidate_vote_percentage.append(vote_percent)
+    #print(candidate_vote_percentage)
 
-    candidate_vote0_percentage = (len(candidate0_vote)/total_votes)*100
-    candidate_vote1_percentage = (len(candidate1_vote)/total_votes)*100
-    candidate_vote2_percentage = (len(candidate2_vote)/total_votes)*100
-    candidate_vote3_percentage = (len(candidate3_vote)/total_votes)*100
-
-    vote_count = [len(candidate0_vote),len(candidate1_vote),len(candidate2_vote),len(candidate3_vote)]
-
-    win_ind = vote_count.index(max(vote_count))
-    #print(win_ind)
-    winner = candidate_names[win_ind]
-
+    #find the winner from the candidate_names list
+    winner_index = candidate_vote_percentage.index(max(candidate_vote_percentage))
+    #print(winner_index)
+    winner = candidate_names[winner_index]
+    #print(winner)
+#Final results printing:
 print("Election Results")
 print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
-print(candidate_names)
-print(f"{candidate_names[0]}: {round(candidate_vote0_percentage,3)}% ({len(candidate0_vote)})")
-print(f"{candidate_names[1]}: {round(candidate_vote1_percentage,3)}% ({len(candidate1_vote)})")
-print(f"{candidate_names[2]}: {round(candidate_vote2_percentage,3)}% ({len(candidate2_vote)})")
-print(f"{candidate_names[3]}: {round(candidate_vote3_percentage,3)}% ({len(candidate3_vote)})")
+
+for x in range(len(candidate_names)):
+    print(f"{candidate_names[x]}: {round(candidate_vote_percentage[x],3)}% ({candidate_vote[x]})")
+
 print("-------------------------------------")
 print(f"Winner: {winner}")
 print("-------------------------------------")
 
+#Printing results to the text file
 sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyPoll/results_main.txt", "w")
 print("Election Results")
 print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
-print(candidate_names)
-print(f"{candidate_names[0]}: {round(candidate_vote0_percentage,3)}% ({len(candidate0_vote)})")
-print(f"{candidate_names[1]}: {round(candidate_vote1_percentage,3)}% ({len(candidate1_vote)})")
-print(f"{candidate_names[2]}: {round(candidate_vote2_percentage,3)}% ({len(candidate2_vote)})")
-print(f"{candidate_names[3]}: {round(candidate_vote3_percentage,3)}% ({len(candidate3_vote)})")
+
+for x in range(len(candidate_names)):
+    print(f"{candidate_names[x]}: {candidate_vote_percentage[x]}% ({candidate_vote[x]})")
+
 print("-------------------------------------")
 print(f"Winner: {winner}")
 print("-------------------------------------")
