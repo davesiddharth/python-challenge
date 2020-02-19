@@ -5,16 +5,6 @@ import os
 import csv
 
 csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data_subset.csv")
-'''def unique(list):
-    unique_list = []
-    for x in list: 
-        # check if exists in unique_list or not 
-        if x not in unique_list: 
-            unique_list.append(x) 
-    print(unique_list)
-    # print list 
-    #for x in unique_list: 
-       #print(x)'''
 
 #reading csv file
 with open(csvpath, newline='') as csvfile:
@@ -65,6 +55,12 @@ with open(csvpath, newline='') as csvfile:
     candidate_vote2_percentage = (len(candidate2_vote)/total_votes)*100
     candidate_vote3_percentage = (len(candidate3_vote)/total_votes)*100
 
+    vote_count = [len(candidate0_vote),len(candidate1_vote),len(candidate2_vote),len(candidate3_vote)]
+
+    win_ind = vote_count.index(max(vote_count))
+    #print(win_ind)
+    winner = candidate_names[win_ind]
+
 print("Election Results")
 print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
@@ -74,6 +70,6 @@ print(f"{candidate_names[1]}: {round(candidate_vote1_percentage,3)}% ({len(candi
 print(f"{candidate_names[2]}: {round(candidate_vote2_percentage,3)}% ({len(candidate2_vote)})")
 print(f"{candidate_names[3]}: {round(candidate_vote3_percentage,3)}% ({len(candidate3_vote)})")
 print("-------------------------------------")
-print(f"Winner: ")
+print(f"Winner: {winner}")
 print("-------------------------------------")
 
