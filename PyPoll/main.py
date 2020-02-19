@@ -3,8 +3,9 @@ import os
 
 #import module to read csv files
 import csv
+import sys
 
-csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data_subset.csv")
+csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data.csv")
 
 #reading csv file
 with open(csvpath, newline='') as csvfile:
@@ -73,3 +74,15 @@ print("-------------------------------------")
 print(f"Winner: {winner}")
 print("-------------------------------------")
 
+sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyPoll/results_main.txt", "w")
+print("Election Results")
+print("-------------------------------------")
+print(f"Total Votes: {total_votes}")
+print(candidate_names)
+print(f"{candidate_names[0]}: {round(candidate_vote0_percentage,3)}% ({len(candidate0_vote)})")
+print(f"{candidate_names[1]}: {round(candidate_vote1_percentage,3)}% ({len(candidate1_vote)})")
+print(f"{candidate_names[2]}: {round(candidate_vote2_percentage,3)}% ({len(candidate2_vote)})")
+print(f"{candidate_names[3]}: {round(candidate_vote3_percentage,3)}% ({len(candidate3_vote)})")
+print("-------------------------------------")
+print(f"Winner: {winner}")
+print("-------------------------------------")
