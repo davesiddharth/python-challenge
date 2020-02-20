@@ -40,7 +40,7 @@ with open(csvpath, newline='') as csvfile:
     #print(candidate_vote)
 
     for percentage in range(len(candidate_names)):
-        vote_percent = round((candidate_vote[percentage]/total_votes)*100,3)
+        vote_percent = format((candidate_vote[percentage]/total_votes)*100,'.3f')
         candidate_vote_percentage.append(vote_percent)
     #print(candidate_vote_percentage)
 
@@ -55,7 +55,7 @@ print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
 
 for x in range(len(candidate_names)):
-    print(f"{candidate_names[x]}: {round(candidate_vote_percentage[x],3)}% ({candidate_vote[x]})")
+    print(f"{candidate_names[x]}: {candidate_vote_percentage[x]}% ({candidate_vote[x]})")
 
 print("-------------------------------------")
 print(f"Winner: {winner}")
