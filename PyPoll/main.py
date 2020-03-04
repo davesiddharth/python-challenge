@@ -4,8 +4,10 @@ import os
 #import module to read csv files
 import csv
 import sys
+##Assistant Instructor Comments: Make sure to use relative path. This is so that others can still run your code even though they don't have the same file directory as you.
+#csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data.csv")
+csvpath = os.path.join("../Resources/PyPoll_election_data.csv")
 
-csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyPoll_election_data.csv")
 
 #reading csv file
 with open(csvpath, newline='') as csvfile:
@@ -62,7 +64,10 @@ print(f"Winner: {winner}")
 print("-------------------------------------")
 
 #Printing results to the text file
-sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyPoll/results_main.txt", "w")
+
+## Assistant Instructor Comments: Same goes here with the path. make sure to use relative paths otherwise the code would throw errors
+sys.stdout = open("results_main.txt", "w")
+#sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyPoll/results_main.txt", "w")
 print("Election Results")
 print("-------------------------------------")
 print(f"Total Votes: {total_votes}")

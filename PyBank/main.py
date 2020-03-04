@@ -4,9 +4,9 @@ import os
 #import module to read csv files
 import csv
 import sys
-
-csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyBank_budget_data.csv")
-
+##Assistant Instructor Comments: Make sure to use relative path. This is so that others can still run your code even though they don't have the same file directory as you.
+#csvpath = os.path.join("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/Resources/PyBank_budget_data.csv")
+csvpath = os.path.join("..","Resources","PyBank_budget_data.csv")
 # Define the the functions to calculate total months, total profit/loss, average change, greatest increase in profits and greatest decrease in profits
 #def total_months():
     
@@ -59,8 +59,10 @@ with open(csvpath, 'r') as csvfile:
     print(f"Greatest Increase in Profits: {months[max_profit_ind]} (${max_profit})")
     print(f"Greatest Decrease in Profits: {months[max_loss_ind]} (${max_loss})")
 
+## Assistant Instructor Comments: Same goes here with the path. make sure to use relative paths otherwise the code would throw errors
 
-sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyBank/results_main.txt", "w")
+#sys.stdout = open("C:/Users/siddh/Desktop/Data Analytics Bootcamp/03 PYTHON/Homework/python-challenge/PyBank/results_main.txt", "w")
+sys.stdout = open("../results_main.txt", "w")
 print("Financial Analysis")
 print("--------------------------------------------------------")
 print(f"Total Months: {total_months}")
